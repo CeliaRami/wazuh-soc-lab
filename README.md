@@ -12,26 +12,23 @@ Lab personnel de cybersécurité : un serveur **Wazuh** (SIEM/XDR) déployé sur
 - Automatiser une réaction : bloquer l'adresse d'un attaquant
 
 ## Architecture
-                   PC hôte (192.168.56.1)
-        SSH (port 2229)  |  Dashboard (port 8443)
-            redirections de ports (NAT)
-                         |
-   +---------------------+----------------------+
-   |                  VirtualBox                |
-   |                                            |
-   |  +----------------+     +---------------+  |
-   |  |   VM Wazuh     |<----|  VM Ubuntu    |  |
-   |  |  manager       |     |  agent Wazuh  |  |
-   |  |  indexer       |     |  serveur SSH  |  |
-   |  |  dashboard     |     |               |  |
-   |  | 192.168.56.101 |     | 192.168.56.102|  |
-   |  +----------------+     +---------------+  |
-   |      réseau privé hôte 192.168.56.0/24     |
-   +--------------------------------------------+
+
+```mermaid
+flowchart LR
+  PC["PC hôte<br/>192.168.56.1"]
+  subgraph VB["VirtualBox : réseau privé hôte 192.168.56.0/24"]
+    W["VM Wazuh<br/>manager, indexer, dashboard<br/>192.168.56.101"]
+    U["VM Ubuntu<br/>agent Wazuh, serveur SSH<br/>192.168.56.102"]
+  end
+  PC -->|"SSH (2229) et dashboard (8443) via NAT"| W
+  U -->|"événements de l'agent"| W
+  PC -.->|"attaque SSH simulée"| U
+```
 
 | Machine | Carte 1 | Carte 2 |
-| VM Wazuh| NAT (redirections de ports) | Réseau privé hôte |
-| VM Ubuntu| Réseau privé hôte | NAT (accès internet) |
+|---|---|---|
+| VM Wazuh | NAT (redirections de ports) | Réseau privé hôte |
+| VM Ubuntu | Réseau privé hôte | NAT (accès internet) |
 
 Détails : [docs/01-architecture.md](docs/01-architecture.md)
 

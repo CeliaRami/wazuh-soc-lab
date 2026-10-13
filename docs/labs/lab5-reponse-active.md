@@ -80,7 +80,13 @@ ssh celia@192.168.56.102
 sudo iptables -L -n
 ```
 
-Une règle **DROP** visant l'adresse du PC hôte (192.168.56.1) est apparue dans le pare-feu d'Ubuntu.
+Relevé du pare-feu d'Ubuntu avec `sudo iptables -L -n`, avant puis après l'attaque :
+
+| Avant l'attaque | Après l'attaque |
+|---|---|
+| ![iptables sans règle DROP](../../screenshots/lab5-reponse-active/01-iptables-avant-blocage.png) | ![iptables avec règle DROP](../../screenshots/lab5-reponse-active/02-iptables-apres-blocage.png) |
+
+Après l'attaque, une règle **DROP** visant l'adresse du PC hôte (masquée sur la capture) apparaît dans les chaînes `INPUT` et `FORWARD`. Les chaînes `LIBVIRT_*` proviennent de l'installation d'Ubuntu et ne sont pas liées à Wazuh.
 
 Chaîne complète : mauvais mots de passe, alertes SSH, règle 5763, ordre du manager, exécution de `firewall-drop` par l'agent, règle `iptables`.
 

@@ -1,0 +1,12 @@
+<!--
+  Règle personnalisée du lab 4.
+  À ajouter à la fin de /var/ossec/etc/rules/local_rules.xml (serveur Wazuh).
+  Documentation : docs/labs/lab4-regle-personnalisee.md
+-->
+<group name="local,fim,">
+  <rule id="100010" level="12">
+    <if_sid>550</if_sid>
+    <match>fim-test/secret.txt</match>
+    <description>Fichier critique secret.txt modifie</description>
+  </rule>
+</group>

@@ -1,0 +1,12 @@
+<!--
+  Réponse active du lab 5.
+  À placer dans /var/ossec/etc/ossec.conf (serveur Wazuh), avant la balise de fin </ossec_config>.
+  La commande firewall-drop est déjà déclarée par défaut dans ce fichier.
+  Documentation : docs/labs/lab5-reponse-active.md
+-->
+<active-response>
+  <command>firewall-drop</command>
+  <location>local</location>
+  <rules_id>5763</rules_id>
+  <timeout>180</timeout>
+</active-response>

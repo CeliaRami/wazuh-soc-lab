@@ -25,11 +25,6 @@ flowchart LR
   PC -.->|"attaque SSH simulée"| U
 ```
 
-| Machine | Carte 1 | Carte 2 |
-|---|---|---|
-| VM Wazuh | NAT (redirections de ports) | Réseau privé hôte |
-| VM Ubuntu | Réseau privé hôte | NAT (accès internet) |
-
 Détails : [docs/01-architecture.md](docs/01-architecture.md)
 
 ## Technologies

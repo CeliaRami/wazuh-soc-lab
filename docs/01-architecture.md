@@ -50,4 +50,4 @@ L'adresse 127.0.0.1 limite l'accès à ces ports au PC hôte.
 
 Le dashboard Wazuh affiche l'agent `ubuntu-agent` au statut **Active** : il est enregistré auprès du serveur et lui envoie ses événements.
 
-![Agent ubuntu-agent actif dans le dashboard Wazuh](../screenshots/architecture/01-dashboard-agent-actif.png)
+![Agent ubuntu-agent actif dans le dashboard Wazuh](../screenshots/architecture/01-dashboard-agent-actif.png.png)

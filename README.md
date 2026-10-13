@@ -69,4 +69,3 @@ Un rapport d'incident complet sur la force brute SSH est disponible : [rapport-i
 - [Installation](docs/02-installation.md)
 - [Démarrage du lab](docs/03-demarrage-du-lab.md)
 - [Glossaire](docs/glossaire.md) · [Commandes utiles](docs/commandes-utiles.md)
-- [Guide complet (PDF)](Lab_SOC_Wazuh_Guide.pdf)

@@ -47,15 +47,25 @@ Dans le dashboard : **Threat Hunting**, agent `ubuntu-agent`, onglet **Events**,
 
 ### Champs analysés
 
+La réussite a été relevée sur le serveur Wazuh (agent `wazuh-server`, redémarrage d'un service avec `sudo`) : c'est la même règle 5402 qui se déclenche pour tout `sudo` réussi vers `root`. L'échec a été relevé sur `ubuntu-agent`, lors du test avec trois mauvais mots de passe.
+
 | Champ | Signification | Réussite | Échec |
 |---|---|---|---|
-| `rule.id` | Règle déclenchée | **À COMPLÉTER** | **À COMPLÉTER** |
-| `rule.description` | Ce que Wazuh a compris | **À COMPLÉTER** | **À COMPLÉTER** |
-| `rule.level` | Gravité de 0 à 15 | **À COMPLÉTER** | **À COMPLÉTER** |
-| `data.srcuser` | Compte qui a lancé `sudo` | **À COMPLÉTER** | **À COMPLÉTER** |
-| `data.dstuser` | Droits demandés | **À COMPLÉTER** | **À COMPLÉTER** |
-| `data.command` | Commande lancée avec ces droits | **À COMPLÉTER** | **À COMPLÉTER** |
-| `rule.mitre.technique` | Technique ATT&CK associée | **À COMPLÉTER** | **À COMPLÉTER** |
+| `rule.id` | Règle déclenchée | 5402 | 5404 |
+| `rule.description` | Ce que Wazuh a compris | Successful sudo to ROOT executed. | Three failed attempts to run sudo |
+| `rule.level` | Gravité de 0 à 15 | 3 (Low) | 10 (Medium) |
+| `data.srcuser` | Compte qui a lancé `sudo` | `root` | `celia` |
+| `data.dstuser` | Droits demandés | `root` | `root` |
+| `data.command` | Commande lancée avec ces droits | `/usr/bin/systemctl restart wazuh-dashboard` | `/usr/bin/whoami` |
+| `rule.mitre.technique` | Technique ATT&CK associée | Sudo and Sudo Caching (T1548.003) | Sudo and Sudo Caching (T1548.003) |
+
+Le champ `full_log` de l'alerte d'échec contient le texte brut de l'événement : `celia : 3 incorrect password attempts ; TTY=pts/0 ; PWD=/home/celia ; USER=root ; COMMAND=/usr/bin/whoami`.
+
+### Lecture
+
+- **Escalade de gravité** : un `sudo` réussi est classé niveau 3 (Low). Trois échecs consécutifs déclenchent une règle distincte au niveau 10 (Medium). Pour comparaison, la documentation officielle de Wazuh décrit la règle 5401, « Failed attempt to run sudo », au niveau 5 pour un échec isolé (versions 3.x à 4.2, non vérifiée sur la 4.14.7) : la répétition fait donc monter la gravité.
+- **Classification MITRE** : les deux alertes sont rattachées à la technique T1548.003 (Sudo and Sudo Caching), des tactiques Privilege Escalation et Defense Evasion.
+- **Contexte** : `data.srcuser`, `data.command` et `data.pwd` répondent à « qui, quoi, depuis où » lors d'une enquête.
 
 ## Ce que j'ai retenu
 

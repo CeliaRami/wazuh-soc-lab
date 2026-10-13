@@ -90,9 +90,7 @@ Après l'attaque, une règle **DROP** visant l'adresse du PC hôte (masquée sur
 
 Chaîne complète : mauvais mots de passe, alertes SSH, règle 5763, ordre du manager, exécution de `firewall-drop` par l'agent, règle `iptables`.
 
-### Retrait automatique
-
-**À COMPLÉTER** : après 180 secondes, la règle `DROP` a-t-elle disparu et le SSH répond-il de nouveau ?
+La durée du blocage est fixée à 180 secondes dans la configuration (`<timeout>180</timeout>`), et la commande `firewall-drop` déclare `<timeout_allowed>yes</timeout_allowed>`. Le retrait automatique n'a pas été mesuré dans ce lab : sa vérification (journal `/var/ossec/logs/active-responses.log` ou relevés `iptables` horodatés) fait partie des améliorations possibles.
 
 ## Limites et précautions
 

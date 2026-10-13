@@ -45,3 +45,9 @@ L'adresse 127.0.0.1 limite l'accès à ces ports au PC hôte.
 - **Deux cartes par machine** : le réseau privé hôte permet au PC et aux VM de se joindre entre eux, tandis que le NAT donne l'accès internet (téléchargement de l'agent) sans exposer les VM.
 - **NAT simple avec redirections plutôt que Réseau NAT** : le Réseau NAT de VirtualBox n'ouvrait pas les ports sur cette installation. Voir [le dépannage](depannage/reseau-nat-virtualbox.md).
 - **Attaque depuis le PC hôte** : l'attaque arrive par le réseau privé hôte, comme un attaquant externe, et l'agent d'Ubuntu observe ses effets dans les journaux du système.
+
+## Vérification : agent connecté
+
+Le dashboard Wazuh affiche l'agent `ubuntu-agent` au statut **Active** : il est enregistré auprès du serveur et lui envoie ses événements.
+
+![Agent ubuntu-agent actif dans le dashboard Wazuh](../screenshots/architecture/01-dashboard-agent-actif.png)

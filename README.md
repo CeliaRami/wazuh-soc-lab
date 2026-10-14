@@ -17,8 +17,8 @@ Lab personnel de cybersécurité : un serveur **Wazuh** (SIEM/XDR) déployé sur
 flowchart LR
   PC["PC hôte<br/>192.168.56.1"]
   subgraph VB["VirtualBox : réseau privé hôte 192.168.56.0/24"]
-    W["VM Wazuh<br/>manager, indexer, dashboard<br/>192.168.56.101"]
-    U["VM Ubuntu<br/>agent Wazuh, serveur SSH<br/>192.168.56.102"]
+    W["VM Wazuh<br/>manager, indexer, dashboard<br/>192.168.X.X"]
+    U["VM Ubuntu<br/>agent Wazuh, serveur SSH<br/>192.168.X.X"]
   end
   PC -->|"SSH (2229) et dashboard (8443) via NAT"| W
   U -->|"événements de l'agent"| W

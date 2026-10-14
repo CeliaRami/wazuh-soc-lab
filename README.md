@@ -15,7 +15,7 @@ Lab personnel de cybersécurité : un serveur **Wazuh** (SIEM/XDR) déployé sur
 
 ```mermaid
 flowchart LR
-  PC["PC hôte<br/>192.168.56.1"]
+  PC["PC hôte<br/>192.168.X.X"]
   subgraph VB["VirtualBox : réseau privé hôte 192.168.56.0/24"]
     W["VM Wazuh<br/>manager, indexer, dashboard<br/>192.168.X.X"]
     U["VM Ubuntu<br/>agent Wazuh, serveur SSH<br/>192.168.X.X"]

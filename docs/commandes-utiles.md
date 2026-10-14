@@ -4,7 +4,7 @@
 
 - `netstat -an | findstr 2229` : vérifier que la redirection de port SSH est active (`LISTENING`)
 - `ssh wazuh-user@127.0.0.1 -p 2229` : se connecter à la VM Wazuh
-- `ssh celia@192.168.56.102` : se connecter à Ubuntu (ou provoquer des échecs de connexion)
+- `ssh celia@192.168.X.X` : se connecter à Ubuntu (ou provoquer des échecs de connexion)
 
 ## Services et état du système
 

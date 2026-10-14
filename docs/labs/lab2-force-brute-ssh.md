@@ -38,7 +38,7 @@ Ubuntu possède deux adresses, une par carte réseau. L'attaque provient du PC h
 Depuis l'invite de commande du PC hôte :
 
 ```
-ssh celia@192.168.56.102
+ssh celia@192.168.X.X
 ```
 
 1. Une première connexion avec le bon mot de passe réussit. Elle laisse elle aussi une trace dans les journaux (connexion acceptée). Déconnexion avec `exit`.

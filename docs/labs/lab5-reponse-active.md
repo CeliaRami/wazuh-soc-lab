@@ -65,7 +65,7 @@ sudo iptables -L -n
 Plusieurs tentatives de connexion SSH avec de mauvais mots de passe, comme au [lab 2](lab2-force-brute-ssh.md) :
 
 ```
-ssh celia@192.168.56.102
+ssh celia@192.168.X.X
 ```
 
 | Phase | Observation |
